@@ -1,6 +1,13 @@
 # badminton
 
 #### 跳过 确认提交资源预定吗?
+whistle 正则替换：
+```json
+{
+    "/,\s*(kP\(\).*?\"rm\"\])\((\{[\s\S]*?\})\)\)/gmi": ",(window.confirmConf=$2),window.confirmConf.onOk())"
+}
+```
+
 代码定位：
 1. 保存 js，prettier 格式化，terser 再压缩回去
 2. whistle 代理
@@ -25,6 +32,7 @@ whistle 文本替换：
     "{data:e,state:a},e.variable)}))})},Lw=__webpack_require__(75472)": "{data:Object.assign({}, e, {defaultValue:'1'}),state:a},e.variable)}))})},Lw=__webpack_require__(75472)"
 }
 ```
+
 代码定位：
 1. React DevTool 光标定位组件到 TextAria
 2. 找到 `key=reason` 的组件，报错
