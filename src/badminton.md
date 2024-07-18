@@ -19,6 +19,12 @@
 
 
 #### 申请原因 默认值
+whistle 文本替换：
+```json
+{
+    "{data:e,state:a},e.variable)}))})},Lw=__webpack_require__(75472)": "{data:Object.assign({}, e, {defaultValue:'1'}),state:a},e.variable)}))})},Lw=__webpack_require__(75472)"
+}
+```
 代码定位：
 1. React DevTool 光标定位组件到 TextAria
 2. 找到 `key=reason` 的组件，报错
