@@ -2,7 +2,7 @@
 
 #### 跳过 确认提交资源预定吗?
 whistle 正则替换：
-`/,\s*(kP\(\).*?\"rm\"\])\((\{[\s\S]*?\})\)\)/gmi.toString()`
+`/,(kP...In.*?.rm.\])\((\{[\s\S]*?\})\)\)/igm.toString()`
 ```json
 {
     "/,\s*(kP\(\).*?\"rm\"\])\((\{[\s\S]*?\})\)\)/gmi": ",(window.confirmConf=$2),window.confirmConf.onOk())"
