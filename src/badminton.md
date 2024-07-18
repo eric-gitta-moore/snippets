@@ -4,7 +4,7 @@
 whistle 正则替换：
 ```json
 {
-    "/,\s*(kP\(\).*?\"rm\"\])\((\{[\s\S]*?\})\)\)/gmi": ",(window.confirmConf=$2),window.confirmConf.onOk())"
+    "/,\s*(kP\(\).*?"rm"\])\((\{[\s\S]*?\})\)\)/gmi": ",(window.confirmConf=$2),window.confirmConf.onOk())"
 }
 ```
 
