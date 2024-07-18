@@ -16,3 +16,28 @@
     onOk: function() {
     ```
 8. 把这个入参单独拿出来，把逗号表达式末尾的 confirm 调用 `kP()[In(1155, Z, Q, 3097, 2e3) + "rm"](confirmConf));` 直接替换成 onOk
+
+
+#### 申请原因 默认值
+代码定位：
+1. React DevTool 光标定位组件到 TextAria
+2. 找到 `key=reason` 的组件，报错
+3. 定位到该组件的父组件，devtool 右侧进入查看代码，断点 debug
+4. 可以找到 `children: t` 是一个 jsx 对象
+5. 联系上下文，看到是一个 `useMemo`
+6. 找到 `i = (0, tr.useMemo` 这个变量 `i` 下面被用到的地方，断点 debug
+
+    ```diff
+    +(0, Aa.jsx)(i, {
+        children: null == o ? void 0 : o.map((function(e) {
+            return (0,
+    +        Aa.jsx)(jw, {
+                data: e,
+                state: a
+            }, e.variable)
+        }
+        ))
+    })
+    ```
+7. 定位到这个 `data: e` 就是具体的数据
+8. 改成 `Object.assign({}, e, {defaultValue:'1'})` 完事
