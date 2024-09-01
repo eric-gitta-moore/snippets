@@ -103,7 +103,7 @@ study.xuexi.cn/api/v1 http://localhost:6752/api/v1
     container.querySelectorAll('.list-item').forEach(e => e.remove())
 
     function randomTime() {
-        return ~~(Math.random() * 60 * 10 * 1000)
+        return ~~(Math.random() * 60 * 3 * 1000) + 1000 * 60
     }
     function* timeGenerator(init) {
         let timestamp = new Date(`2000-01-01 ${init}:00`).getTime()
@@ -122,11 +122,28 @@ study.xuexi.cn/api/v1 http://localhost:6752/api/v1
         { time: '', desc: '登录' },
     ]
     let gen = timeGenerator('10:00')
-    Array.from([
-        ...Array.from({ length: 10 }).map(e => demoList[(Math.random() > 0.5) ? 1 : 0]),
-        demoList[2]
-    ]).map(({ desc = 'desc', score = 1 }, idx) => {
-        const { value: time } = gen.next()
+    Array.prototype.toReversed = function () {
+        return [...this].reverse()
+    }
+    let lineList = [
+        {
+            ...demoList[2],
+            time: gen.next().value
+        }
+    ]
+
+    for (let i = 0; i <10; i++) {
+        lineList.push({
+            ...demoList[(Math.random() > 0.5) ? 1 : 0],
+            time: gen.next().value
+        })
+    }
+
+    lineList.reverse()
+
+    console.log(lineList)
+
+    lineList.map(({ time, desc = 'desc', score = 1 }, idx) => {
         container.innerHTML += itemRender({ time, desc, score })
     })
 
